@@ -4,14 +4,13 @@ import Text from "../components/text";
 import profileImage from "../assets/profile.jpg";
 import ParallaxImage from "../components/parallax-image";
 
-// TODO: Add to transations
 const aboutTexts = [
-  "Salut à tous, moi c'est Alex ! Je suis un développeur Full-Stack passionné par la création d'applications innovantes et intuitives. J'ai une expertise en Flutter et Dart, ainsi qu'un niveau avancé en JavaScript/TypeScript, ce qui me permet de concevoir des solutions personnalisées pour les clients en utilisant les dernières technologies et les meilleures pratiques.",
-  "En plus de mes compétences en développement, j'ai également de fortes apétences en design et fais de l'UX/UI pour la plupart de mes projets freelance. Cette expertise me permet de créer des applications non seulement fonctionnelles, mais aussi belles et intuitives. Je suis convaincu que l'expérience utilisateur est l'élément clé pour une application réussie.",
-  "Développeur Full-Stack, je suis capable de travailler sur tous les aspects de l'application, de la conception à la mise en production. Je suis constamment à la recherche de nouvelles idées et de méthodes innovantes pour améliorer mes compétences et ma créativité. Mais ce n'est pas tout ! Je suis aussi un grand fan de l'open source. J'aime collaborer avec d'autres développeurs et contribuer à la communauté. Même si je n'ai pas encore eu la chance de participer à des projets open source, je suis toujours à la recherche d'opportunités pour le faire.",
-  "En dehors du développement, j'aime le sport et la nature. Je crois que ces activités sont essentielles pour maintenir une concentration optimale et un équilibre de vie sain. Je suis également un musicien depuis plus de 10 ans, ce qui me permet de canaliser ma créativité dans d'autres domaines.",
-  "Il est important de noter que je n'ai suivi aucune formation universitaire en informatique, mais acquis toutes mes compétences de manière autodidacte après mon BEP en arts graphiques.",
-  "Si vous cherchez un développeur Full-Stack avec une expertise technique solide, une passion pour l'open source et une personnalité unique, ne cherchez plus ! Contactez-moi et ensemble, créons quelque chose d'exceptionnel.",
+  "Hi everyone, I'm Alex! I'm a full-stack developer with a passion for creating innovative and intuitive applications. I have expertise in Go, Python, Flutter and Dart, as well as an advanced level in JavaScript / TypeScript, which allows me to design custom solutions for clients using the latest technologies and best practices.",
+  "In addition to my development skills, I also have strong design skills and do UX/UI for most of my freelance projects. This expertise enables me to create applications that are not only functional, but also beautiful and intuitive. I'm convinced that the user experience is the key to a successful application.",
+  "As a full-stack developer, I'm able to work on all aspects of the application, from design to production. I'm constantly looking for new ideas and innovative methods to improve my skills and creativity. But that's not all! I'm also a big fan of open source. I love collaborating with other developers and contributing to the community. Even though I haven't yet had the chance to participate in open source projects, I'm always looking for opportunities to do so.",
+  "Apart from development, I love sport and nature. I believe these activities are essential for maintaining optimum concentration and a healthy life balance. I've also been a musician for over 10 years, which allows me to channel my creativity into other areas",
+  "It's important to note that I didn't follow any university training in IT, but acquired all my skills self-taught after my BEP in graphic arts.",
+  "If you're looking for a full-stack developer with solid technical expertise, a passion for open source and a unique personality, look no further! Contact me and let's create something exceptional together",
 ];
 
 export default function About() {
@@ -20,7 +19,7 @@ export default function About() {
       <div class="relative z-10">
         <Title type="h1" text="About Me" />
         {aboutTexts.map((aboutText) => (
-          <Text class="text-xl pb-2">{aboutText}</Text>
+          <Text class="text-xl pb-4">{aboutText}</Text>
         ))}
       </div>
       <ParallaxImage

@@ -1,14 +1,12 @@
 import About from "./sections/about";
 import Header from "./components/header";
 import Projects from "./sections/projects";
-import Articles from "./sections/articles";
 import Contact from "./sections/contact";
 import { createSignal, onMount } from "solid-js";
 
 const navigationLinks: Link[] = [
   { name: "About", url: "#about" },
   { name: "Projects", url: "#projects" },
-  { name: "Articles", url: "#articles" },
   { name: "Contact", url: "#contact" },
 ];
 
@@ -33,7 +31,7 @@ function App() {
 
     const filteredData = data.filter((repo: any) => !repo.fork);
     const parsedRepos: GitHubRepo[] = filteredData.map((repo: any) => ({
-      name: repo.full_name,
+      name: repo.name,
       url: repo.html_url,
       description: repo.description,
       language: repo.language,
@@ -56,7 +54,6 @@ function App() {
           <main>
             <About />
             <Projects projects={repos()} />
-            <Articles />
             <Contact />
           </main>
         </>

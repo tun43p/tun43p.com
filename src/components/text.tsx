@@ -1,21 +1,20 @@
-import { JSX } from "solid-js/jsx-runtime";
-
 type Props = {
   children: string;
-  class: string;
+  class?: string;
 };
 
 export default function Text({ children, class: className }: Props) {
   const wordsToColor = [
     {
-      words: ["Full-Stack", "UX/UI"],
+      words: ["full-stack", "UX/UI", "open source"],
       color: "bg-amber-300",
     },
     {
       words: [
         "Flutter",
         "Dart",
-        "JavaScript/TypeScript",
+        "JavaScript",
+        "TypeScript",
         "Deno",
         "Docker",
         "Python",
@@ -26,16 +25,17 @@ export default function Text({ children, class: className }: Props) {
     {
       words: [
         "freelance",
-        "open source",
         "trading",
         "developed",
         "command-line",
         "projects",
+        "technologies",
+        "design",
       ],
       color: "bg-purple-300",
     },
     {
-      words: ["créativité", "musicien", "client", "clients"],
+      words: ["creativity", "musician", "clients", "skills", "contact"],
       color: "bg-pink-300",
     },
     {
