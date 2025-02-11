@@ -70,8 +70,8 @@ function App() {
           />
           <main>
             <About t={t} />
-            <Projects projects={repos()} />
-            <Contact />
+            <Projects projects={repos()} t={t} />
+            <Contact t={t} />
           </main>
         </>
       )}
