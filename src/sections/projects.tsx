@@ -1,44 +1,46 @@
 import Title from "../components/title";
+import Text from "../components/text";
 
-const projects = [
-  {
-    name: "tun43p",
-    description:
-      "My personal website, built with Vite, Tailwind CSS, and TypeScript.",
-    url: "https://github.com/tun43p/tun43p.com",
-  },
-  {
-    name: "sample-1",
-    description: "Sample project 1 description.",
-    url: "https://github.com/tun43p",
-  },
-  {
-    name: "sample-2",
-    description: "Sample project 2 description.",
-    url: "https://github.com/tun43p",
-  },
-  {
-    name: "sample-3",
-    description: "Sample project 3 description.",
-    url: "https://github.com/tun43p",
-  },
-];
+type Props = {
+  projects: GitHubRepo[];
+};
 
-export default function Projects() {
+export default function Projects({ projects }: Props) {
   return (
     <section id="projects" class="w-full min-h-screen pt-18">
       <Title type="h1" text="Projects" class="pl-4" />
-      {projects.map((project) => (
-        <div class="p-4 border-b border-black flex justify-between items-center">
-          <h2 class="text-2xl font-bold">{project.name}</h2>
-          <div>
-            <p class="text-lg">{project.description}</p>
-            <a class="text-lg text-blue-500 hover:underline" href={project.url}>
-              {project.url}
-            </a>
+      <Text class="p-4 text-xl">
+        There is a list of my projects available on GitHub, most of my client
+        projects are private but you can check my personal projects.
+      </Text>
+      {projects
+        .sort(
+          (a, b) =>
+            new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
+        )
+        .map((project) => (
+          <div class="p-4 border-b border-black lg:flex lg:justify-between lg:items-center">
+            <div>
+              <h2 class="text-2xl font-bold">{project.name}</h2>
+              <a
+                class="text-lg text-blue-500 hover:underline"
+                href={project.url}
+                target="_blank"
+              >
+                {project.url}
+              </a>
+            </div>
+            <div class="flex flex-col lg:items-end lg:pt-0 pt-4">
+              {project.description && (
+                <Text class="text-lg">{project.description}</Text>
+              )}
+              <div class="flex lg:pt-0 pt-2">
+                <p>{project.language}</p>
+                <p class="pl-4">Created at: {project.createdAt}</p>
+              </div>
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
     </section>
   );
 }

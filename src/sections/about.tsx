@@ -1,4 +1,5 @@
 import Title from "../components/title";
+import Text from "../components/text";
 
 import profileImage from "../assets/profile.jpg";
 import ParallaxImage from "../components/parallax-image";
@@ -14,46 +15,12 @@ const aboutTexts = [
 ];
 
 export default function About() {
-  const wordsToColor = [
-    {
-      words: ["Full-Stack", "UX/UI"],
-      color: "bg-amber-300",
-    },
-    {
-      words: ["Flutter", "Dart", "JavaScript/TypeScript"],
-      color: "bg-blue-300",
-    },
-    {
-      words: ["freelance", "open source"],
-      color: "bg-purple-300",
-    },
-    {
-      words: ["créativité", "musicien"],
-      color: "bg-pink-300",
-    },
-  ];
-
-  const colorWords = (text: string) => {
-    let newText = text;
-
-    wordsToColor.forEach((wordToColor) => {
-      wordToColor.words.forEach((word) => {
-        newText = newText.replace(
-          new RegExp(word, "g"),
-          `<span class="rounded-md px-1 ${wordToColor.color}">${word}</span>`,
-        );
-      });
-    });
-
-    return newText;
-  };
-
   return (
     <section id="about" class="w-full max-w-5xl min-h-screen pl-4 pr-4 pt-18">
       <div class="relative z-10">
         <Title type="h1" text="About Me" />
         {aboutTexts.map((aboutText) => (
-          <p class="text-xl pb-2" innerHTML={colorWords(aboutText)}></p>
+          <Text class="text-xl pb-2">{aboutText}</Text>
         ))}
       </div>
       <ParallaxImage
