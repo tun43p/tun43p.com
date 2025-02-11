@@ -35,7 +35,7 @@ function App() {
       url: repo.html_url,
       description: repo.description,
       language: repo.language,
-      createdAt: new Date(repo.created_at).toLocaleDateString(),
+      createdAt: repo.created_at,
     }));
 
     setRepos(parsedRepos);
