@@ -1,28 +1,26 @@
-## Usage
+# Website
 
-```bash
-$ npm install # or pnpm install or yarn install
-```
+[![Netlify Status](https://api.netlify.com/api/v1/badges/3590e166-929e-4314-8cd9-61588d867457/deploy-status)](https://app.netlify.com/sites/tun43p/deploys)
 
-### Learn more on the [Solid Website](https://solidjs.com) and come chat with us on our [Discord](https://discord.com/invite/solidjs)
+## Table of contents
 
-## Available Scripts
+- [Website](#website)
+  - [Table of contents](#table-of-contents)
+  - [Getting started](#getting-started)
+    - [Download](#download)
+  - [Authors](#authors)
+  - [License](#license)
 
-In the project directory, you can run:
+## Getting started
 
-### `npm run dev`
+### Download
 
-Runs the app in the development mode.<br>
-Open [http://localhost:5173](http://localhost:5173) to view it in the browser.
+To download this project, please do: `git clone https://github.com/tun43p/tun43p.com.git`.
 
-### `npm run build`
+## Authors
 
-Builds the app for production to the `dist` folder.<br>
-It correctly bundles Solid in production mode and optimizes the build for the best performance.
+- **tun43p** - _Initial work_ - [tun43p](https://github.com/tun43p).
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+## License
 
-## Deployment
-
-Learn more about deploying your application with the [documentations](https://vite.dev/guide/static-deploy.html)
+This project is licensed under the MIT License, see the [LICENSE](LICENSE) file for details.
