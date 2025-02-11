@@ -6,12 +6,24 @@ type Props = {
 export default function Text({ children, class: className }: Props) {
   const wordsToColor = [
     {
-      words: ["full-stack", "UX/UI", "open source", "Rust"],
+      words: ["full-stack", "UX/UI", "open source", "Rust", "SoundCloud"],
       color: "bg-amber-300",
     },
     {
-      words: ["Flutter", "Dart", "TypeScript", "Deno", "Docker", "Go", "React"],
+      words: [
+        "Flutter",
+        "Dart",
+        "TypeScript",
+        "Deno",
+        "Docker",
+        "React",
+        "LinkedIn",
+      ],
       color: "bg-blue-300",
+    },
+    {
+      words: ["Twitter", "Go", "Harmony"],
+      color: "bg-cyan-300",
     },
     {
       words: ["Python", "JavaScript", "blockchain"],
@@ -29,7 +41,6 @@ export default function Text({ children, class: className }: Props) {
         "command-line",
         "projects",
         "technologies",
-        "Harmony",
         "Lua",
       ],
       color: "bg-purple-300",
@@ -43,7 +54,7 @@ export default function Text({ children, class: className }: Props) {
       color: "bg-red-300",
     },
     {
-      words: ["Vue.js", "creativity", "design", "Design"],
+      words: ["Vue.js", "creativity", "design", "Design", "hello@tun43p.com"],
       color: "bg-green-300",
     },
   ];
