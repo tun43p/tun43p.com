@@ -5,7 +5,7 @@ type Props = {
 
 export default function Header({ title, links }: Props) {
   return (
-    <header class="w-full border-b border-black flex justify-between items-center">
+    <header class="w-full bg-amber-50 border-b border-black flex justify-between items-center fixed z-1000">
       <p class="text-xl pl-4">{title}</p>
       <nav class="w-fit-content border-l border-black h-full p-4">
         <ul class="flex space-x-4 text-xl">

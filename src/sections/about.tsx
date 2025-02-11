@@ -1,7 +1,7 @@
-import Title from "./title";
+import Title from "../components/title";
 
 import profileImage from "../assets/profile.jpg";
-import ParallaxImage from "./parallax-image";
+import ParallaxImage from "../components/parallax-image";
 
 // TODO: Add to transations
 const aboutTexts = [
@@ -49,7 +49,7 @@ export default function About() {
   };
 
   return (
-    <section id="about" class="w-full max-w-5xl">
+    <section id="about" class="w-full max-w-5xl min-h-screen pl-4 pr-4 pt-18">
       <div class="relative z-10">
         <Title type="h1" text="About Me" />
         {aboutTexts.map((aboutText) => (
