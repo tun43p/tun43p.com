@@ -1,18 +1,22 @@
 import Title from "../components/title";
 import Text from "../components/text";
+import { NullableTranslator } from "@solid-primitives/i18n";
+import { Dictionary } from "../i18n";
 
 type Props = {
   projects: GitHubRepo[];
+  t: NullableTranslator<Dictionary, string>;
 };
 
-export default function Projects({ projects }: Props) {
+export default function Projects({ projects, t }: Props) {
   return (
     <section id="projects" class="w-full min-h-screen pt-18">
-      <Title type="h1" text="Projects" class="pl-4" />
-      <Text class="p-4 text-xl">
-        There is a list of my projects available on GitHub, most of my client
-        projects are private but you can check my personal projects.
-      </Text>
+      {t("projects.title") && (
+        <Title type="h1" text={t("projects.title")!} class="pl-4" />
+      )}
+      {t("projects.phrase") && (
+        <Text class="p-4 text-xl">{t("projects.phrase")!}</Text>
+      )}
       {projects
         .sort(
           (a, b) =>
