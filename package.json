@@ -16,7 +16,8 @@
     "solid-js": "^1.9.4",
     "tailwindcss": "^4.0.6",
     "vite": "^6.1.0",
-    "vite-plugin-solid": "^2.11.1"
+    "vite-plugin-solid": "^2.11.1",
+    "vite-plugin-ssr": "^0.4.142"
   },
   "devDependencies": {
     "@types/node": "^22.13.1",
