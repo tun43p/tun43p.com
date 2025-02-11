@@ -14,7 +14,7 @@ export default function Text({ children, class: className }: Props) {
       color: "bg-blue-300",
     },
     {
-      words: ["Python", "JavaScript"],
+      words: ["Python", "JavaScript", "blockchain"],
       color: "bg-yellow-300",
     },
     {
@@ -30,15 +30,16 @@ export default function Text({ children, class: className }: Props) {
         "projects",
         "technologies",
         "Harmony",
+        "Lua",
       ],
       color: "bg-purple-300",
     },
     {
-      words: ["musician", "clients", "skills", "contact"],
+      words: ["musician", "clients", "skills", "contact", "C\\+\\+"],
       color: "bg-pink-300",
     },
     {
-      words: ["Chrome", "Firefox", "Svelte"],
+      words: ["Chrome", "Firefox", "Svelte", "Shell", "prototyping"],
       color: "bg-red-300",
     },
     {

@@ -15,31 +15,34 @@ function App() {
   const [repos, setRepos] = createSignal<GitHubRepo[]>([]);
 
   onMount(async () => {
-    const url = "https://api.github.com/users/tun43p/repos";
+    try {
+      const url = "https://api.github.com/users/tun43p/repos";
 
-    const request = new Request(url, {
-      method: "GET",
-      headers: {
-        Accept: "application/vnd.github.v3+json",
-      },
-    });
+      const request = new Request(url, {
+        method: "GET",
+        headers: {
+          Accept: "application/vnd.github.v3+json",
+        },
+      });
 
-    const response = await fetch(request);
-    const data = await response.json();
+      const response = await fetch(request);
+      const data = await response.json();
 
-    console.log(data);
+      const filteredData = data.filter((repo: any) => !repo.fork);
+      const parsedRepos: GitHubRepo[] = filteredData.map((repo: any) => ({
+        name: repo.name,
+        url: repo.html_url,
+        description: repo.description,
+        language: repo.language,
+        createdAt: repo.created_at,
+      }));
 
-    const filteredData = data.filter((repo: any) => !repo.fork);
-    const parsedRepos: GitHubRepo[] = filteredData.map((repo: any) => ({
-      name: repo.name,
-      url: repo.html_url,
-      description: repo.description,
-      language: repo.language,
-      createdAt: repo.created_at,
-    }));
-
-    setRepos(parsedRepos);
-    setLoading(false);
+      setRepos(parsedRepos);
+      setLoading(false);
+    } catch (error) {
+      console.error(error);
+      setLoading(false);
+    }
   });
 
   return (

@@ -19,7 +19,7 @@ export default function Projects({ projects }: Props) {
             new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
         )
         .map((project) => (
-          <div class="p-4 border-b border-black lg:flex lg:justify-between lg:items-center">
+          <div class="p-4 border-b border-black lg:flex lg:justify-between lg:items-center hover:pl-12 hover:pr-12 transition-all">
             <div>
               <h2 class="text-2xl font-bold">{project.name}</h2>
               <a
@@ -35,8 +35,10 @@ export default function Projects({ projects }: Props) {
                 <Text class="text-lg">{project.description}</Text>
               )}
               <div class="flex lg:pt-0 pt-2">
-                <p>{project.language}</p>
-                <p class="pl-4">Created at: {project.createdAt}</p>
+                {project.language && <Text>{project.language}</Text>}
+                <p class="pl-4">
+                  Created at: {new Date(project.createdAt).toLocaleDateString()}
+                </p>
               </div>
             </div>
           </div>
