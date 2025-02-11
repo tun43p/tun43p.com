@@ -1,18 +1,27 @@
+import { createResource, createSignal, onMount } from "solid-js";
+import { flatten, translator } from "@solid-primitives/i18n";
+
+import { Dictionary, Locale, RawDictionary } from "./i18n";
 import About from "./sections/about";
 import Header from "./components/header";
 import Projects from "./sections/projects";
 import Contact from "./sections/contact";
-import { createSignal, onMount } from "solid-js";
-
-const navigationLinks: Link[] = [
-  { name: "About", url: "#about" },
-  { name: "Projects", url: "#projects" },
-  { name: "Contact", url: "#contact" },
-];
 
 function App() {
+  const [locale, setLocale] = createSignal<Locale>("en");
   const [loading, setLoading] = createSignal(true);
   const [repos, setRepos] = createSignal<GitHubRepo[]>([]);
+
+  async function fetchDictionary(locale: Locale): Promise<Dictionary> {
+    setLoading(true);
+    const d: RawDictionary = (await import(`./i18n/${locale}.ts`)).dict;
+    setLoading(false);
+
+    return flatten(d);
+  }
+
+  const [dict] = createResource(locale, fetchDictionary);
+  const t = translator(dict);
 
   onMount(async () => {
     try {
@@ -53,9 +62,14 @@ function App() {
         </div>
       ) : (
         <>
-          <Header title="tun43p" links={navigationLinks} />
+          <Header
+            title="tun43p"
+            locale={locale()}
+            setLocale={setLocale}
+            t={t}
+          />
           <main>
-            <About />
+            <About t={t} />
             <Projects projects={repos()} />
             <Contact />
           </main>
