@@ -4,7 +4,7 @@ type Props = {
 };
 
 export default function Text({ children, class: className }: Props) {
-  const wordsToColor = [
+  const wordsToColor: { words: string[]; color: string }[] = [
     {
       words: ["full-stack", "UX/UI", "open source", "Rust", "SoundCloud"],
       color: "bg-amber-300",
@@ -18,6 +18,7 @@ export default function Text({ children, class: className }: Props) {
         "Docker",
         "React",
         "LinkedIn",
+        "hello@tun43p.com",
       ],
       color: "bg-blue-300",
     },
@@ -34,19 +35,11 @@ export default function Text({ children, class: className }: Props) {
       color: "bg-gray-300",
     },
     {
-      words: [
-        "freelance",
-        "trading",
-        "developed",
-        "command-line",
-        "projects",
-        "technologies",
-        "Lua",
-      ],
+      words: ["trading", "command-line", "projects", "technologies", "Lua"],
       color: "bg-purple-300",
     },
     {
-      words: ["musician", "clients", "skills", "contact", "C\\+\\+"],
+      words: ["skills", "C\\+\\+"],
       color: "bg-pink-300",
     },
     {
@@ -54,7 +47,7 @@ export default function Text({ children, class: className }: Props) {
       color: "bg-red-300",
     },
     {
-      words: ["Vue.js", "creativity", "design", "Design", "hello@tun43p.com"],
+      words: ["Vue.js", "creativity", "design", "Design"],
       color: "bg-green-300",
     },
   ];
@@ -66,7 +59,7 @@ export default function Text({ children, class: className }: Props) {
       wordToColor.words.forEach((word) => {
         newText = newText.replace(
           new RegExp(word, "g"),
-          `<span class="rounded-md px-1 ${wordToColor.color}">${word}</span>`,
+          `<span class="rounded-md px-1 ${wordToColor.color}">${word.replaceAll("\\", "")}</span>`,
         );
       });
     });
