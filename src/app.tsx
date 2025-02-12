@@ -8,8 +8,13 @@ import Header from "./components/header";
 import Projects from "./sections/projects";
 import Contact from "./sections/contact";
 
+function detectUserLocale(): Locale {
+  const browserLang = navigator.language.slice(0, 2);
+  return browserLang === "fr" ? "fr" : "en";
+}
+
 function App() {
-  const [locale, setLocale] = createSignal<Locale>("fr");
+  const [locale, setLocale] = createSignal<Locale>(detectUserLocale());
   const [loading, setLoading] = createSignal(false);
   const [repos, setRepos] = createSignal<GitHubRepo[]>([]);
   const [dict, setDict] = createSignal<Dictionary | null>(null);
