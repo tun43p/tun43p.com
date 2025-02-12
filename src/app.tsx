@@ -8,22 +8,33 @@ import Projects from "./sections/projects";
 import Contact from "./sections/contact";
 
 function App() {
-  const [locale, setLocale] = createSignal<Locale>("en");
-  const [loading, setLoading] = createSignal(true);
+  const [locale, setLocale] = createSignal<Locale>("fr");
+  const [loading, setLoading] = createSignal(false);
   const [repos, setRepos] = createSignal<GitHubRepo[]>([]);
 
   async function fetchDictionary(locale: Locale): Promise<Dictionary> {
     setLoading(true);
-    const d: RawDictionary = (await import(`./i18n/${locale}.ts`)).dict;
-    setLoading(false);
 
-    return flatten(d);
+    try {
+      console.log(`Loading dictionary for locale: ${locale}`);
+
+      const module = await import(`./i18n/${locale}.ts`);
+      console.log(module);
+
+      const d: RawDictionary = module.dict;
+
+      return flatten(d);
+    } finally {
+      setLoading(false);
+    }
   }
 
   const [dict] = createResource(locale, fetchDictionary);
   const t = translator(dict);
 
   onMount(async () => {
+    setLoading(true);
+
     try {
       const url = "https://api.github.com/users/tun43p/repos";
 
@@ -47,9 +58,10 @@ function App() {
       }));
 
       setRepos(parsedRepos);
-      setLoading(false);
     } catch (error) {
       console.error(error);
+      setLoading(false);
+    } finally {
       setLoading(false);
     }
   });
