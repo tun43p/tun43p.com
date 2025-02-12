@@ -1,22 +1,20 @@
 import Title from "../components/title";
 import Text from "../components/text";
-import { NullableTranslator } from "@solid-primitives/i18n";
 import { Dictionary } from "../i18n";
 
 type Props = {
   projects: GitHubRepo[];
-  t: NullableTranslator<Dictionary, string>;
+  dict: Dictionary;
 };
 
-export default function Projects({ projects, t }: Props) {
+export default function Projects({ projects, dict }: Props) {
+  const title = dict["projects.title"];
+  const phrase = dict["projects.phrase"];
+
   return (
     <section id="projects" class="w-full min-h-screen pt-18">
-      {t("projects.title") && (
-        <Title type="h1" text={t("projects.title")!} class="pl-4" />
-      )}
-      {t("projects.phrase") && (
-        <Text class="p-4 text-xl">{t("projects.phrase")!}</Text>
-      )}
+      <Title type="h1" text={title} class="pl-4" />
+      <Text class="p-4 text-xl">{phrase}</Text>
       {projects
         .sort(
           (a, b) =>

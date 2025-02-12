@@ -1,24 +1,25 @@
 import Title from "../components/title";
 import Text from "../components/text";
+import { Dictionary } from "../i18n";
 
 import profileImage from "../assets/profile.jpg";
 import ParallaxImage from "../components/parallax-image";
-import { NullableTranslator } from "@solid-primitives/i18n";
-import { Dictionary } from "../i18n";
 
 type Props = {
-  t: NullableTranslator<Dictionary, string>;
+  dict: Dictionary;
 };
 
-export default function About({ t }: Props) {
+export default function About({ dict }: Props) {
+  const title = dict["about.title"];
+  const content = dict["about.content"];
+
   return (
     <section id="about" class="w-full max-w-5xl min-h-screen pl-4 pr-4 pt-18">
       <div class="relative z-10">
-        {t("about.title") && <Title type="h1" text={t("about.title")!} />}
-        {t("about.content") &&
-          t("about.content")!.map((text) => (
-            <Text class="text-xl pb-4">{text}</Text>
-          ))}
+        <Title type="h1" text={title} />
+        {content.map((text) => (
+          <Text class="text-xl pb-4">{text}</Text>
+        ))}
       </div>
       <ParallaxImage
         src={profileImage}

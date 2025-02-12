@@ -1,14 +1,15 @@
-import { NullableTranslator } from "@solid-primitives/i18n";
 import { Dictionary, Locale } from "../i18n";
 
 type Props = {
   title: string;
   locale: Locale;
   setLocale: (locale: Locale) => void;
-  t: NullableTranslator<Dictionary, string>;
+  dict: Dictionary;
 };
 
-export default function Header({ title, locale, setLocale, t }: Props) {
+export default function Header({ title, locale, setLocale, dict }: Props) {
+  const links = dict["header.links"];
+
   return (
     <header class="w-full bg-amber-50 border-b border-black flex justify-between items-center fixed z-1000">
       <p class="text-xl pl-4">{title}</p>
@@ -27,12 +28,11 @@ export default function Header({ title, locale, setLocale, t }: Props) {
         </div>
         <nav class="w-fit-content border-l border-black h-full p-4">
           <ul class="flex space-x-4 text-xl">
-            {t("header.links") &&
-              t("header.links")!.map((link) => (
-                <li>
-                  <a href={"#" + link.toLowerCase()}>{link}</a>
-                </li>
-              ))}
+            {links.map((link) => (
+              <li>
+                <a href={"#" + link.toLowerCase()}>{link}</a>
+              </li>
+            ))}
           </ul>
         </nav>
       </div>

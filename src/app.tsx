@@ -1,7 +1,8 @@
-import { createResource, createSignal, onMount } from "solid-js";
-import { flatten, translator } from "@solid-primitives/i18n";
+import { createEffect, createSignal, onMount, Show } from "solid-js";
+import { flatten } from "@solid-primitives/i18n";
 
 import { Dictionary, Locale, RawDictionary } from "./i18n";
+
 import About from "./sections/about";
 import Header from "./components/header";
 import Projects from "./sections/projects";
@@ -11,26 +12,24 @@ function App() {
   const [locale, setLocale] = createSignal<Locale>("fr");
   const [loading, setLoading] = createSignal(false);
   const [repos, setRepos] = createSignal<GitHubRepo[]>([]);
+  const [dict, setDict] = createSignal<Dictionary | null>(null);
 
-  async function fetchDictionary(locale: Locale): Promise<Dictionary> {
+  async function fetchDictionary(locale: Locale): Promise<void> {
     setLoading(true);
 
     try {
-      console.log(`Loading dictionary for locale: ${locale}`);
-
       const module = await import(`./i18n/${locale}.ts`);
-      console.log(module);
-
       const d: RawDictionary = module.dict;
 
-      return flatten(d);
+      setDict(flatten(d));
     } finally {
       setLoading(false);
     }
   }
 
-  const [dict] = createResource(locale, fetchDictionary);
-  const t = translator(dict);
+  createEffect(() => {
+    fetchDictionary(locale());
+  });
 
   onMount(async () => {
     setLoading(true);
@@ -68,25 +67,26 @@ function App() {
 
   return (
     <div class="w-full bg-amber-50">
-      {loading() ? (
-        <div class="w-full min-h-screen flex justify-center items-center">
-          <p class="text-4xl">Loading...</p>
-        </div>
-      ) : (
-        <>
-          <Header
-            title="tun43p"
-            locale={locale()}
-            setLocale={setLocale}
-            t={t}
-          />
-          <main>
-            <About t={t} />
-            <Projects projects={repos()} t={t} />
-            <Contact t={t} />
-          </main>
-        </>
-      )}
+      <Show
+        when={!loading() && dict()}
+        fallback={
+          <div class="w-full min-h-screen flex justify-center items-center">
+            <p class="text-4xl">Loading...</p>
+          </div>
+        }
+      >
+        <Header
+          title="tun43p"
+          locale={locale()}
+          setLocale={setLocale}
+          dict={dict()!}
+        />
+        <main>
+          <About dict={dict()!} />
+          <Projects projects={repos()} dict={dict()!} />
+          <Contact dict={dict()!} />
+        </main>
+      </Show>
     </div>
   );
 }
