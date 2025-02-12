@@ -60,7 +60,7 @@ export default function Contact({ dict }: Props) {
           </div>
         </div>
       </div>
-      <Footer />
+      <Footer dict={dict} />
     </section>
   );
 }

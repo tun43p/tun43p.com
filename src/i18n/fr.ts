@@ -18,11 +18,15 @@ export const dict: EN = {
     title: "Projets",
     phrase:
       "Voici une liste de mes projets disponibles sur GitHub, la plupart de mes projets clients sont privés mais vous pouvez consulter mes projets personnels.",
+    createdAt: "Créé le",
   },
   contact: {
     title: "Contact",
     phrase: "Si vous voulez faire de la magie ensemble, je suis tout ouïe !",
     email: "Vous pouvez m'envoyer un email à",
     socials: "Ou me trouver sur",
+  },
+  footer: {
+    tag: "Fait avec ❤️ par tun43p",
   },
 };

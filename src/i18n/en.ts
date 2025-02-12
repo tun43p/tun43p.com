@@ -1,3 +1,5 @@
+import { create } from "domain";
+
 export const dict = {
   header: {
     links: ["About", "Projects", "Contact"],
@@ -16,12 +18,16 @@ export const dict = {
     title: "Projects",
     phrase:
       "There is a list of my projects available on GitHub, most of my client projects are private but you can check my personal projects.",
+    createdAt: "Created at",
   },
   contact: {
     title: "Contact",
     phrase: "If you want to make some magic together, I'm all ears!",
     email: "You can send me an email at",
     socials: "Or find me on",
+  },
+  footer: {
+    tag: "Made with ❤️ by tun43p",
   },
 };
 

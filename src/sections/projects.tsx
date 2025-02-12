@@ -10,6 +10,7 @@ type Props = {
 export default function Projects({ projects, dict }: Props) {
   const title = dict["projects.title"];
   const phrase = dict["projects.phrase"];
+  const createdAt = dict["projects.createdAt"];
 
   return (
     <section id="projects" class="w-full min-h-screen pt-18">
@@ -39,7 +40,7 @@ export default function Projects({ projects, dict }: Props) {
               <div class="flex lg:pt-0 pt-2">
                 {project.language && <Text>{project.language}</Text>}
                 <p class="pl-4">
-                  Created at: {new Date(project.createdAt).toLocaleDateString()}
+                  {`${createdAt} ${new Date(project.createdAt).toLocaleDateString()}`}
                 </p>
               </div>
             </div>
